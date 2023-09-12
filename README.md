@@ -9,14 +9,14 @@ Link Adaptable  : https://mini-perpus.adaptable.app
 A.  Checklist
 
 1. Membuat sebuah proyek Django baru:   
-    a. Membuat direktori lokal yang kemudian akan menjadi direktori utama
-    b. Menyalakan virtual environment setiap akan membuat proyek baru agar dependencies untuk tiap proyek terisolasi
-    c. Menyiapkan dependencies dalam berkas requirements.txt dan menginstallnya
+    a. Membuat direktori lokal yang kemudian akan menjadi direktori utama  
+    b. Menyalakan virtual environment setiap akan membuat proyek baru agar dependencies untuk tiap proyek terisolasi  
+    c. Menyiapkan dependencies dalam berkas requirements.txt dan menginstallnya  
     d. Membuat proyek baru dengan command `django-admin startproject`
 
 2. Membuat aplikasi dengan nama main pada proyek tersebut: Menjalankan command `python manage.py startapp main` pada direktori utama dan mendaftarkannya pad settings.py
 
-3. Melakukan routing pada proyek agar dapat menjalankan aplikasi main: Membuat berkas urls.py pada direktori main dan mengisi file tersebut dengan:
+3. Melakukan routing pada proyek agar dapat menjalankan aplikasi main: Membuat berkas urls.py pada direktori main dan mengisi file tersebut dengan:  
     a. Mengimpor path dari django.urls untuk mendefinisikan pola URL.
     b. Menggunakan fungsi `show_main` dari modul main.views sebagai tampilan yang akan ditampilkan ketika URL terkait diakses.
     c. Memberikan app_name untuk memberikan nama unik pada pola URL dalam aplikasi.
