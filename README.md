@@ -8,7 +8,7 @@ Link Adaptable  : https://mini-perpus.adaptable.app
 
 A.  Checklist
 
-1. Membuat sebuah proyek Django baru: 
+1. Membuat sebuah proyek Django baru:   
     a. Membuat direktori lokal yang kemudian akan menjadi direktori utama
     b. Menyalakan virtual environment setiap akan membuat proyek baru agar dependencies untuk tiap proyek terisolasi
     c. Menyiapkan dependencies dalam berkas requirements.txt dan menginstallnya
