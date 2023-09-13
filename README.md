@@ -46,3 +46,29 @@ A.  Checklist
     f. Menambahkan `python manage.py migrate && gunicorn mini_perpus.wsgi` pada bagian "Start Command"  
     g. Memasukkan nama aplikasi yang akan menjadi domain untuk situs web aplikasi dan mencentang HTTP Listener on PORT  
     h. Klik "Deploy App", kemudian proses deployment akan dimulai
+
+
+B.  Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html. 
+
+![alt text](bagan.jpg)  
+    Pertama, client akan membuat request ke URL aplikasi Django melalui internet. Kemudian, urls.py akan memetakan request tersebut melalui route yang menghubungkan URL yang diminta dengan fungsi atau kelas tampilan yang akan menanganinya. Lalu, views.py akan menerima permintaan dan memprosesnya sesuai dengan logika aplikasi. Misal dalam halaman profil, views akan memeriksa data pengguna yang diminta dan mempersiapkan data tersebut untuk ditampilkan. Selanjutnya views.py akan berinteraksi dengan models.py untuk mengakses atau memperbarui data di database. Setelah memproses data, views akan menggunakan template HTML yang berisi struktur dan elemen-elemen HTML untuk menyusun halaman web dengan mengisi data yang diperlukan. Setelah halaman web selesai dibuat, aplikasi akan mengirimkannya sebagai respons (response) kembali kepada client yang mengakses URL tersebut melalui internet dengan tampilan yang sesuai dengan request.  
+
+C. Jelaskan mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?  
+    Virtual environment dibutuhkan untuk mengisolasi dependencies dari suatu proyek, yang dimana dependencies tersebut tercatat pada requirements.txt. Hal ini akan memudahkan developer dalam mengelola berbagai proyek karena tiap proyek akan memiliki environment dan dependenciesnya masing-masing yang sudah terpisah. Sebenarnya, aplikasi web berbasis Django tetap dapat dibuat tanpa menggunakan virtual environment jika hanya dilakukan pada server local. Namun, hal ini akan sulit dilakukan jika kita akan melakukan deploy project menggunakan online hoster karena online hoster perlu menyesuaikan dependencies yang diperlukan proyek dengan mesin hosting.
+
+D. Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya  
+    a. MVC (Model-View-Controller):  
+        - Model: Komponen yang mengatur dan mengelola logika aplikasi, data, validasi, dan interaksi.
+        - View (Tampilan): Komponen yang mengontrol bagaimana data yang dikelola oleh model akan ditampilkan dengan menyiapkan komponenen-komponen yang akan terlibat seperti text boxes, dropdowns, dan lainnya.
+        - Controller (Kontroler): Sebagai penengah dari Model dan View yang bertugas untuk memproses logika dan permintaan yang masuk dan berinteraksi dengan View untuk me-render output.
+    b. MVT (Model-View-Template):  
+        - Model: Sama seperti dalam Model dalam MVC yang bertugas mengelola data dan aplikasi.
+        View (Tampilan): Berperan sebagai pengatur tampilan dengan mengambil data dari model untuk ditampilkan kepada pengguna
+        - Template: Mengatur tampilan atau antarmuka pengguna dengan memisahkan kode HTML dari logika aplikasi untuk merancang tampilan yang diisi dengan data dari Model melalui View.
+    c. MVVM (Model-View-ViewModel):
+    - Model (Model): Sama seperti Model dalam MVC dan MVT yang bertugas mengelola data dan logika aplikasi.
+    - View (Tampilan): Bertanggung jawab untuk menyiapkan elemen yang akan ditampilkan dan menerima input dari user.
+    - ViewModel (Model Tampilan): Menjadi jembatan antara Model dan View yang mengontrol interaksi dari View  
+    d. Perbedaan:  
+    Pada MVC, terdapat controller yang mengendalikan Model dan View yang ditulis dengan kode spesifik untuk mengontrol. Sementara pada MVT, terdapat View yang menerima request dan mengembalikan respon dari HTTP dan Controller pada MVT sudah diatur oleh frameworknya sendiri.
+    MVT adalah sebuah adaptasi dari MVC yang lebih khusus untuk kerangka kerja Django. Pada MVVM, logika yang digunakan yaitu data-binding, yang memudahkan dalam membuat perubahan pada aplikasi dibanding dengan MVC yang kodenya berlapis-lapis.
