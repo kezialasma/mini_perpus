@@ -65,7 +65,7 @@ Link Adaptable  : https://mini-perpus.adaptable.app
     D. XML by ID
     ![alt text](xml_2.png)
     E. JSON by ID
-    ![alt text](son_1.png)
+    ![alt text](json_1.png)
 
 Referensi:
 - https://aws.amazon.com/id/compare/the-difference-between-json-xml/
