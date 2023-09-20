@@ -6,6 +6,8 @@ Kelas   : PBP A
 
 Link Adaptable  : https://mini-perpus.adaptable.app
 
+TUGAS 2
+
 A.  Checklist
 
 1. Membuat sebuah proyek Django baru:   
@@ -72,3 +74,19 @@ D. Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya
     d. Perbedaan:  
     Pada MVC, terdapat controller yang mengendalikan Model dan View yang ditulis dengan kode spesifik untuk mengontrol. Sementara pada MVT, terdapat View yang menerima request dan mengembalikan respon dari HTTP dan Controller pada MVT sudah diatur oleh frameworknya sendiri.
     MVT adalah sebuah adaptasi dari MVC yang lebih khusus untuk kerangka kerja Django. Pada MVVM, logika yang digunakan yaitu data-binding, yang memudahkan dalam membuat perubahan pada aplikasi dibanding dengan MVC yang kodenya berlapis-lapis.
+
+
+TUGAS 3
+1. Apa perbedaan antara form POST dan form GET dalam Django?  
+    Method GET dan Post merupakan method yang digunakan untuk mengirim request HTTP ke server. Perbedaanya yaitu terletak pada tampilan URL, dimana GET akan menampilkan request HTTP pada URL, sementara POST tidak menampilkan request HTTP sehingga lebih aman untuk data yang membutuhkan privasi.  
+    Contoh:  
+    GET     : google.com/search?q=difference+between+post+and+get  
+    POST    : https://scele.cs.ui.ac.id/user/profile.php?id=5465 (tidak menampilkan username dan password)  
+
+2. Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?  
+    a. XML     : Menggunakan markup tags sebagai basis sintaksnya. Sifat datanya terstruktur dan memiliki validasi yang kuat sehingga biasanya digunakan untuk konfigurasi aplikasi.
+    b. JSON    : Menggunakan format pasangan key dan value. JSON mempunyai struktur yang lebih sederhana dibandingkan XML, namun ukuran datanya jauh lebih efisien sehingga biasanya digunakan untuk pengembangan web yang membutuhkan pertukaran data antara server dan client.
+    c. HTML     : HTML juga menggunakan markup tags sebagai basis sintaksnya, namun tujuannya adalah untuk merender tampilan sehingga biasanya digunakan untuk membuat tampilah halaman web  
+
+3. Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?  
+    JSON sering digunakan dalam pertukaran data aplikasi web modern dikarenakan 
