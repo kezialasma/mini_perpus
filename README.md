@@ -57,15 +57,15 @@ Link Adaptable  : https://mini-perpus.adaptable.app
     ```  
 5. Screenshot Postman  
     A. HTML  
-    ![HTML](image/html.png)
+    ![alt text](html.png)
     B. XML  
-    ![XML](image/xml.png)
+    ![alt text](xml.png)
     C. JSON  
-    ![JSON](image/json.png)
+    ![alt text](json.png)
     D. XML by ID
-    ![XML](image/xml_2.png)
+    ![alt text](xml_2.png)
     E. JSON by ID
-    ![JSON](image/json_1.png)
+    ![alt text](son_1.png)
 
 Referensi:
 - https://aws.amazon.com/id/compare/the-difference-between-json-xml/
@@ -140,5 +140,5 @@ D. Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya
     d. Perbedaan:  
     Pada MVC, terdapat controller yang mengendalikan Model dan View yang ditulis dengan kode spesifik untuk mengontrol. Sementara pada MVT, terdapat View yang menerima request dan mengembalikan respon dari HTTP dan Controller pada MVT sudah diatur oleh frameworknya sendiri.
     MVT adalah sebuah adaptasi dari MVC yang lebih khusus untuk kerangka kerja Django. Pada MVVM, logika yang digunakan yaitu data-binding, yang memudahkan dalam membuat perubahan pada aplikasi dibanding dengan MVC yang kodenya berlapis-lapis.
-    
+
 </details>
