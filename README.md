@@ -6,7 +6,8 @@ Kelas   : PBP A
 
 Link Adaptable  : https://mini-perpus.adaptable.app
 
-TUGAS 2
+<details>
+<summary>TUGAS 3</summary>
 
 A.  Checklist
 
@@ -75,8 +76,11 @@ D. Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya
     Pada MVC, terdapat controller yang mengendalikan Model dan View yang ditulis dengan kode spesifik untuk mengontrol. Sementara pada MVT, terdapat View yang menerima request dan mengembalikan respon dari HTTP dan Controller pada MVT sudah diatur oleh frameworknya sendiri.
     MVT adalah sebuah adaptasi dari MVC yang lebih khusus untuk kerangka kerja Django. Pada MVVM, logika yang digunakan yaitu data-binding, yang memudahkan dalam membuat perubahan pada aplikasi dibanding dengan MVC yang kodenya berlapis-lapis.
 
+</details>
 
-TUGAS 3
+<details>
+<summary>TUGAS 2</summary>
+
 1. Apa perbedaan antara form POST dan form GET dalam Django?  
     Method GET dan Post merupakan method yang digunakan untuk mengirim request HTTP ke server. Perbedaanya yaitu terletak pada tampilan URL, dimana GET akan menampilkan request HTTP pada URL, sementara POST tidak menampilkan request HTTP sehingga lebih aman untuk data yang membutuhkan privasi.  
     Contoh:  
@@ -89,4 +93,51 @@ TUGAS 3
     c. HTML     : HTML juga menggunakan markup tags sebagai basis sintaksnya, namun tujuannya adalah untuk merender tampilan sehingga biasanya digunakan untuk membuat tampilah halaman web  
 
 3. Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?  
-    JSON sering digunakan dalam pertukaran data aplikasi web modern dikarenakan 
+    JSON sering digunakan dalam pertukaran data aplikasi web modern karena formatnya lebih sederhana dan ringkas (menjadi lebih mudah dibaca oleh mesin) sehingga komunikasi pertukaran data dapat berlangsung dengan cepat  
+
+4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).  
+    A. Membuat input form untuk menambahkan objek model pada app sebelumnya  
+        - Membuat berkas forms.py pada direktori main untuk menginisiasi fields data yang akan dibutuhkan untuk produk. Pada produk saya, saya menggunakan fields name, amount, description, price serta   
+        - Menambahkan import HttpResponseRedirect, ProductForm, dan reverse pada views.py
+        - Membuat fungsi createProduct dengan parameter request untuk menginisiasi formulir yang menambahkan data produk yang baru diisi pada file tersebut
+        - Menambahkan variabel products = Product.objects.all() pada views.py agar seluruh objek Product tersimpan di database
+        - Membuka file urls.py di direktori utama untuk melakukan import fungsi create_product serta me-routing path create_product ke urlpatterns
+        - Membuat file create_product.html pada templates yang mengextend base.html. File ini akan menginisiasi tampilan untuk "Add Products"  
+    B. Menambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID.  
+        - Untuk melihat dalam format HTML, buat fungsi baru pada views.py, yaitu create_item dengan request untuk merender request product
+        - Kemudian membuat file create_item.html pada templates untuk membuat tampilan page "Add Items"
+        - Untuk format HTML dan JSON, impor HttpResponse dan serializers pada views.py, yang dimana serializers berfungsi untuk translater objek ke model XML dan JSON  
+        - Membuat fungsi show_xml dan show_JSON yang menerima parameter request dengan melakukan serialize response data ke XML atau JSON
+        - Jika ingin melihat objek berdasarkan ID, maka tambahkan fungsi show_xml_by_id dan show_json_by_id dengan menambahkan parameter id kedalam fungsi  
+        - Tambahkan fungsi-fungsi yang telah dibuat tadi sebagai import kedalam folder urls.py dan menambahkan path URL fungsi-fungsi tadi kedalam urlpatterns  
+    C. Membuat routing URL untuk masing-masing views yang telah ditambahkan pada poin 2.  
+    -  Mengimpor fungsi-fungsi yang telah dibuat kedalam urls.py dan menambahkan path url kedalam urlpatterns
+    ```python
+    from django.urls import path
+    from main.views import show_main, create_item, show_xml, show_json, show_xml_by_id, show_json_by_id 
+
+    app_name = 'main'
+
+    urlpatterns = [
+        path('', show_main, name='show_main'),
+        path('create-item', create_item, name='create_item'),
+        path('xml/', show_xml, name='show_xml'), 
+        path('json/', show_json, name='show_json'),
+        path('xml/<int:id>/', show_xml_by_id, name='show_xml_by_id'),
+        path('json/<int:id>/', show_json_by_id, name='show_json_by_id'),  
+    ]
+    ```  
+5. Screenshot Postman  
+    A. HTML  
+    ![HTML](image/html.png)
+    B. XML  
+    ![XML](image/xml.png)
+    C. JSON  
+    ![JSON](image/json.png)
+    D. XML by ID
+    ![XML](image/xml_2.png)
+    E. JSON by ID
+    ![JSON](image/json_1.png)
+
+Referensi:
+- https://aws.amazon.com/id/compare/the-difference-between-json-xml/
