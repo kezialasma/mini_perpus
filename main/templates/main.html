@@ -53,6 +53,14 @@
     {% endfor %}
 </table>
 
+{% if messages %}
+<ul>
+    {% for message in messages %}
+        <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}    
+
 <h5>Sesi terakhir login: {{ last_login }}</h5>
 
 <br />

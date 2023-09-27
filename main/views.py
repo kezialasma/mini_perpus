@@ -96,7 +96,7 @@ def tambah_item(request, id):
     if request.method == "GET" :
         product.amount += 1
         product.save()
-        # messages.success(request, "Berhasil menambahkan jumlah item")
+        messages.success(request, "Berhasil menambahkan jumlah item")
         return redirect('main:show_main')
     return render('main.html')
 
@@ -108,9 +108,9 @@ def kurangi_item(request, id):
         if product.amount > 0 :
             product.amount -= 1
             product.save()
-            # messages.success(request, "Mengurangi jumlah item...")
-        # else :
-        #     messages.error(request, "Tambahkan item terlebih dulu...")
+            messages.success(request, "Mengurangi jumlah item...")
+        else :
+            messages.error(request, "Tambahkan item terlebih dulu...")
         return redirect('main:show_main')
     return render('main.html')
 
@@ -118,6 +118,6 @@ def hapus_item(request, id):
     product = get_object_or_404(Product, pk=id)
     if request.method == "GET" :
         product.delete()
-        # messages.success(request, "Berhasil menghapus item")
+        messages.success(request, "Berhasil menghapus item")
         return redirect('main:show_main')
     return render('main.html')
