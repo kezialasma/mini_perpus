@@ -1,17 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Coffee Store Page</h1>
+    <h1>Toko Buku Baru</h1>
 
-    <h5>Name:</h5>
+    <h3>Name:</h3>
     <p>{{name}}</p>
 
-    <h5>Class:</h5>
+    <h3>Class:</h3>
     <p>{{class}}</p>
+
+    <h3>Jumlah Item yang Kamu Miliki:</h3>
 
 <table>
     <tr>
         <th>Name</th>
+        <th>Amount</th>
         <th>Price</th>
         <th>Description</th>
         <th>Date Added</th>
@@ -22,18 +25,47 @@
     {% for product in products %}
         <tr>
             <td>{{product.name}}</td>
+            <td>{{product.amount}}</td>
             <td>{{product.price}}</td>
             <td>{{product.description}}</td>
             <td>{{product.date_added}}</td>
+            <td> <a href="{% url 'main:tambah_item' product.id %}">
+                    <button>
+                        Tambah
+                    </button>
+                </a>
+            </td>
+
+            <td> <a href="{% url 'main:kurangi_item' product.id %}">
+                    <button>
+                        Kurangi
+                    </button>
+                </a>
+            </td>   
+            
+            <td> <a href="{% url 'main:hapus_item' product.id %}">
+                    <button>
+                        Hapus
+                    </button>
+                </a>
+            </td> 
         </tr>
     {% endfor %}
 </table>
+
+<h5>Sesi terakhir login: {{ last_login }}</h5>
 
 <br />
 
 <a href="{% url 'main:create_product' %}">
     <button>
         Add New Product
+    </button>
+</a>
+
+<a href="{% url 'main:logout' %}">
+    <button>
+        Logout
     </button>
 </a>
 
