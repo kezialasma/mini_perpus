@@ -4,31 +4,92 @@
     <title>Register</title>
 {% endblock meta %}
 
-{% block content %}  
+{% block content %}
+<style>
+    body {
+        background-color: cornsilk;
+    }
 
-<div class = "login">
-    
-    <h1>Register</h1>  
+    .register-container {
+    color :#805f4b;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    }
 
-        <form method="POST" >  
-            {% csrf_token %}  
-            <table>  
-                {{ form.as_table }}  
-                <tr>  
+    .register-box {
+        background-color: rgba(255, 253, 230, 0.8);
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+        max-width: 500px; 
+        margin: auto; 
+    }
+
+    .register-box h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .register-form td {
+        padding: 10px;
+    }
+
+    .form-control {
+        width: calc(100% - 20px);
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .register_btn {
+    background-color: #5d2a08;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: calc(100% - 20px); /* Adjusted width */
+    font-size: 16px;
+    margin-top: 10px; /* Added some margin to separate from the fields */
+}
+
+
+    .register_btn:hover {
+        background-color: #c38b60;
+    }
+
+    .register-form {
+        margin-bottom: 20px;
+    }
+
+</style>
+
+<div class="register-container">
+    <div class="register-box">
+        <h1>Register</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+            <table class="register-form">
+                {{ form.as_table }}
+                <tr>
                     <td></td>
-                    <td><input type="submit" name="submit" value="Daftar"/></td>  
-                </tr>  
-            </table>  
+                    <td><input class="btn register_btn" type="submit" name="submit" value="Register" /></td>
+                </tr>
+            </table>
         </form>
 
-    {% if messages %}  
-        <ul>   
-            {% for message in messages %}  
-                <li>{{ message }}</li>  
-                {% endfor %}  
-        </ul>   
-    {% endif %}
-
-</div>  
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</div>
 
 {% endblock content %}

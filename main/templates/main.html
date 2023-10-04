@@ -1,57 +1,90 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Toko Buku Baru</h1>
 
-    <h3>Name:</h3>
-    <p>{{name}}</p>
+<style>
+    body {
+        background-color: cornsilk;
+        padding: 10px; /* Adjust the padding as needed */
+    }
 
-    <h3>Class:</h3>
-    <p>{{class}}</p>
+    .card {
+        margin-bottom: 20px; 
+        padding: 10px;
+    }
 
-    <h3>Jumlah Item yang Kamu Miliki:</h3>
+    .navbar {
+        background-color: #a97b58;
+        margin-bottom: 20px; /* Adjust the margin as needed */
+        display: flex;
+        justify-content: space-between;
+    }
 
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Amount</th>
-        <th>Price</th>
-        <th>Description</th>
-        <th>Date Added</th>
-    </tr>
+    .navbar-brand {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px; /* Adjust the font size as needed */
+        font-weight: bold;
+        height: 100%;
+    }
+
+    .navbar-buttons {
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar-buttons .btn {
+        margin-left: 10px; /* Add some space between buttons */
+    }
+
+    .add-product-button {
+    background-color: rgb(89, 83, 60);
+    color: #ffffff; /* Set text color to a suitable contrast */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+    .add-product-button:hover {
+        background-color: #695546; /* Change color on hover if desired */
+    }
+</style>
+
+    <nav class="navbar">
+        <a class="navbar-brand" href="#">Toko Kopi Baru
+        <a href="{% url 'main:logout' %}" class="btn btn-light" type="button">Logout</a>
+    </nav>
+
+
+    <h5>Welcome, {{name}} </h5>
+
+    <!-- <h3>Jumlah Item yang Kamu Miliki:</h3> -->
 
     {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
 
     {% for product in products %}
-        <tr>
-            <td>{{product.name}}</td>
-            <td>{{product.amount}}</td>
-            <td>{{product.price}}</td>
-            <td>{{product.description}}</td>
-            <td>{{product.date_added}}</td>
-            <td> <a href="{% url 'main:tambah_item' product.id %}">
-                    <button>
-                        Tambah
-                    </button>
-                </a>
-            </td>
-
-            <td> <a href="{% url 'main:kurangi_item' product.id %}">
-                    <button>
-                        Kurangi
-                    </button>
-                </a>
-            </td>   
-            
-            <td> <a href="{% url 'main:hapus_item' product.id %}">
-                    <button>
-                        Hapus
-                    </button>
-                </a>
-            </td> 
-        </tr>
+    <div class="card" style="width: 320px; height: 400px; display: inline-block; margin-right: 20px;">
+        <div class="card-header" style="text-align: center;">
+        <img src="..." class="rounded-float " style="width: 50px;" alt="...">
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{product.name}}</h5>
+            <p class="card-text">Amount: {{product.amount}}</p>
+            <p class="card-text">Price: {{product.price}}</p>
+            <p class="card-text">Type: {{product.type}}</p>
+            <p class="card-text">Type: {{product.sweetness}}</p>
+            <p class="card-text" style="font-size: 16px; color: #c89797;">Date Added: {{product.date_added}}</p>
+            <div style="text-align: center;">
+                <a href="{% url 'main:tambah_item' product.id %}" class="btn btn-primary">+</a>
+                <a href="{% url 'main:hapus_item' product.id %}" class="btn btn-primary">Hapus</a>
+                <a href="{% url 'main:kurangi_item' product.id %}" class="btn btn-primary">-</a>
+            </div>
+        </div>
+    </div>
     {% endfor %}
-</table>
 
 {% if messages %}
 <ul>
@@ -61,20 +94,15 @@
 </ul>
 {% endif %}    
 
-<h5>Sesi terakhir login: {{ last_login }}</h5>
-
 <br />
 
 <a href="{% url 'main:create_product' %}">
     <button>
-        Add New Product
+        <button class="add-product-button">Add New Product</button>
     </button>
 </a>
 
-<a href="{% url 'main:logout' %}">
-    <button>
-        Logout
-    </button>
-</a>
+<h5>Sesi terakhir login: {{ last_login }}</h5>
+
 
 {% endblock content %}

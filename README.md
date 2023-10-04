@@ -7,6 +7,37 @@ Kelas   : PBP A
 Link Adaptable  : https://mini-perpus.adaptable.app
 
 <details>
+<summary>TUGAS 5</summary>
+
+1.  Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.  
+    a. Universal Selector (*) adalah sebuah jenis elemen selector dalam CSS yang memilih atau mempengaruhi semua elemen di dalam dokumen HTML sehingga selector ini digunakan saat kita ingin menerapkan style elemen tersebut dalam seluruh dokumen  
+    b. Type Selector adalah elemen selector yang dapat digunakan saat kita ingin menerapkan style pada semua instance dari elemen tertentu, contohnya mengubah warna teks atau size text dengan menggunakan 'p', 'h1', 'div'.  
+    c. Class Selector (.classname) digunakan ketika ingin menerapkan style pada semua elemen yang memiliki kelas tertentu seperti 'container', 'box', 'button'.  
+    d. ID Selector dapat digunakan ketika kita ingn menerapkan style pada elemen yang memiliki ID unik seperti '#header' dalam satu halaman.  
+    e. Pseudo class dapat digunakan ketika ingin menerapkan style pada elemen dengan kondisi tertentu seperti saat mouse diarahkan, saat button diklik. Contoh dari pseudo class adalah ':hover', ':active'  
+
+2.  Beberapa HTML5 Tag yang saya ketahui adalah:  
+    a. 'header' yang digunakan untuk menandakan bagian atas dari halaman web atau dari sebuah elemen atau sekelompok elemen.  
+    b. nav sebagai penanda daftar navigasi untuk tautan navigasi ke bagian-bagian lain dari halaman atau ke halaman-halaman lain  
+    c. section yang digunakan untuk menyusun konten dalam satu bagian terkait dalam dokumen seperti artikel atau bagian khusus dari halaman.  
+    d. div yang digunakan sebagai kontainer untuk mengelompokkan dan mengorganisir beberapa elemen dalam dokumen menjadi suatu kesatuan  
+    e. footer yang digunakan untuk mendefinisikan bagian bawah dari halaman atau akhir dari elemen atau sekelompok elemen.  
+
+3.  Jelaskan perbedaan antara margin dan padding.  
+    Margin memiliki konsep yang berada di luar batas elemen antara elemen dan elemen lain di sekitarnya yang menciptakan jarak antara elemen dengan elemen tetangganya atau dengan tepi area konten. Sifatnya sendiri tidak terpengaruh oleh background atau border dan bersifat transparan secara default sehingga jika kita menggunakan elemen seperti warna background, maka margin tidak akan memiliki pengaruh pada elemen tersebut. 
+    Sementara itu, padding memiliki konsep yang mengatur ruang bagian dalam elemen, dimana padding mengontrol ruang diesekitar konten elemennya seperti contohnya mengatur jarak sisi-sisi box pada text yang ada didalamnya. Selain itu, padding juga mempengaruhi background karena padding dapat menampilkan warna background.  
+
+4.  Bootstrap dan Tailwind CSS adalah dua framework CSS yang membantu dalam pembuatan desain situs web. Keduanya memiliki berbeda dalam membangun style dalam komponen situs web dimana Bootstrap memberikan komponen-komponen bawaan yang lebih terstruktur sehingga pada saat tertentu sulit untuk mengubah komponen sesuai dengan kebutuhan khusus tanpa menimpa banyak gaya bawaan Bootstrap. Sementara itu, Tailwind CSS adalah framework utility-first yang memberikan kelas-kelas utilitas yang kuat dan memberikan fleksibilitas besar dalam tata letak dan desain. Bootstrap lebih cocok jika ingin membangun situs dengan cepat karena menggunakan komponen bawaan yang telah dirancang dengan baik. Tetapi jika kita ingin mmebuat situs dengan tingkat kustomisasi tinggi atau ingin mendesain dari nol, akan lebih nyaman menggunakan Tailwind CSS yang memberikan kebebasan lebih besar melalu kelas-kelas yang disediakan.  
+
+5.  Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).  
+    a. Kustomisasi halaman login, register, dan tambah inventori semenarik mungkin.  
+    Pertama, saya merancang desain yang saya inginkan di aplikasi Figma. Kemudian, saya menggunakan markup tags css style untuk menyusun desain-desain tersebut. Dalam markup tags tersebut, saya membuat komponen-komponen apa saja yang ingin saya berikan style, dimana ada beberapa komponen sepert body, container, box, form, button, juga dengan beberapa kondisi atau gayanya seperti saat hover atau model text heading(h) atau paragraph(p). Kemudian dalam komponen-komponen tersebut saya mengatur stylenya denga inisiasi background color, margin, padding, text align, border serta radiusnya, juga font dan font sizenya.  
+    b. Kustomisasi halaman daftar inventori menjadi lebih berwarna maupun menggunakan apporach lain seperti menggunakan Card.  
+    Pada daftar inventori, saya menambah kustomisasi dengan menggunakan card dan radio choice sebagai additional choice untuk produk saya. Untuk card, saya menerapkan desainnnya dengan menandakan bagian dari card menggunakan 'div class' serta mengatur stylenya seperti width, height, display, margin. Didalam 'div', saya menginisiasi bagian card seperti header, body, dan title.  
+    Kemudian untuk mengkustomisasi radio choice, saya menandakan terlebih dulu apa saja yang ingin customize, dalam hal ini saya menambahkan pilihan 'hot, cold' untuk 'type' dan 'less sweet, normal sweet' untuk 'sweetness. Kemudian saya mendaftarkan additional tersebut berupa variabel pada models.py serta tipe datanya dan menambahkannya juga pada fields di models.py dan setelah itu melakukan migration sebagai langkah wajib ketika melakukan perubahan pada model produk. Agar tampilan dari additionals tersebut muncul pada card products, tidak lupa saya menambahkan bagian tersebut pada card text dalam card div.
+</details>
+
+<details>
 <summary>TUGAS 4</summary>
 
 1.  Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?  

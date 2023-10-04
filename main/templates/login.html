@@ -5,41 +5,128 @@
 {% endblock meta %}
 
 {% block content %}
+<style>
+    body {
+    background-color: cornsilk;
+    }
 
-<div class = "login">
+    .login-container {
+    color :#805f4b;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    }
 
-    <h1>Login</h1>
+    .login-box {
+        background-color: rgba(255, 253, 230, 0.8);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        max-width: 400px; 
+        margin: auto; 
+    }
 
-    <form method="POST" action="">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td>Username: </td>
-                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-            </tr>
-                    
-            <tr>
-                <td>Password: </td>
-                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-            </tr>
+    .login-box h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
-            <tr>
-                <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
-            </tr>
-        </table>
-    </form>
+    .login-form td {
+        padding: 10px;
+    }
 
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}     
-        
-    Don't have an account yet? <a href="{% url 'main:register' %}">Register Now</a>
+    .form-control {
+        width: calc(100% - 20px); 
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
 
+    .login_btn {
+        background-color: #5d2a08;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .login_btn:hover {
+        background-color: #826042;
+    }
+
+    .login-form {
+        margin-bottom: 20px;
+    }
+
+    .login-box p {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+
+    .login-box h1 {
+        text-align: center;
+    }
+
+    .login-form {
+        margin-top: 20px;
+    }
+
+    .login-form table {
+        width: 100%;
+    }
+
+    .login-form td {
+        padding: 10px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+</style>
+
+<div class="login-container">
+    <div class="login-box">
+        <h1>Login</h1>
+
+        <form method="POST" action="">
+            {% csrf_token %}
+            <table class="login-form">
+                <tr>
+                    <td>Username:</td>
+                    <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
+                </tr>
+
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><input class="btn login_btn" type="submit" value="Login"></td>
+                </tr>
+            </table>
+        </form>
+
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <p>Don't have an account yet? <a href="{% url 'main:register' %}">Register Now</a></p>
+    </div>
 </div>
 
 {% endblock content %}
