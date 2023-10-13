@@ -4,7 +4,7 @@ NPM     : 2206082234
 
 Kelas   : PBP A
 
-Link Adaptable  : https://mini-perpus.adaptable.app
+Link Adaptable  : https://mini-perpus.adaptable.app  
 Link PaaS       : http://kezia-lasma-tugas.pbp.cs.ui.ac.id/
 
 <details>
