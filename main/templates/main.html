@@ -5,12 +5,14 @@
 <style>
     body {
         background-color: cornsilk;
-        padding: 10px; /* Adjust the padding as needed */
+         /* Adjust the padding as needed */
     }
 
     .card {
         margin-bottom: 20px; 
+        margin-left: 20px;
         padding: 10px;
+        border-radius: 20px;
     }
 
     .navbar {
@@ -25,8 +27,10 @@
         justify-content: center;
         align-items: center;
         font-size: 24px; /* Adjust the font size as needed */
+        color: antiquewhite;
         font-weight: bold;
         height: 100%;
+        margin-left: 10px;
     }
 
     .navbar-buttons {
@@ -46,6 +50,8 @@
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+    margin-bottom: 10px;
+    margin-left: 20px;
 }
 
     .add-product-button:hover {
@@ -59,32 +65,62 @@
     </nav>
 
 
-    <h5>Welcome, {{name}} </h5>
+    <h5 class="card-title" style="margin: 20px;">Welcome, {{name}} </h5>
 
     <!-- <h3>Jumlah Item yang Kamu Miliki:</h3> -->
 
     {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
 
-    {% for product in products %}
-    <div class="card" style="width: 320px; height: 400px; display: inline-block; margin-right: 20px;">
-        <div class="card-header" style="text-align: center;">
-        <img src="..." class="rounded-float " style="width: 50px;" alt="...">
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">{{product.name}}</h5>
-            <p class="card-text">Amount: {{product.amount}}</p>
-            <p class="card-text">Price: {{product.price}}</p>
-            <p class="card-text">Type: {{product.type}}</p>
-            <p class="card-text">Type: {{product.sweetness}}</p>
-            <p class="card-text" style="font-size: 16px; color: #c89797;">Date Added: {{product.date_added}}</p>
-            <div style="text-align: center;">
-                <a href="{% url 'main:tambah_item' product.id %}" class="btn btn-primary">+</a>
-                <a href="{% url 'main:hapus_item' product.id %}" class="btn btn-primary">Hapus</a>
-                <a href="{% url 'main:kurangi_item' product.id %}" class="btn btn-primary">-</a>
+    <div id="product_cards"></div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form" onsubmit="return false;">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="col-form-label">Name:</label>
+                            <input type="text" class="form-control" id="name" name="name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="amount" class="col-form-label">Amount:</label>
+                            <input type="number" class="form-control" id="amount" name="amount">
+                        </div>
+                        <div class="mb-3">
+                            <label for="price" class="col-form-label">Price:</label>
+                            <input type="number" class="form-control" id="price" name="price">
+                        </div>
+                        <div class="mb-3">
+                            <label for="type" class="col-form-label">Type:</label>
+                            <select class="form-select" id="type" name="type">
+                                <option value="" selected>---------</option>
+                                <option value="Cold">Cold</option>
+                                <option value="Hot">Hot</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="sweetness" class="col-form-label">Sweetness:</label>
+                            <select class="form-select" id="sweetness" name="sweetness">
+                                <option value="" selected>---------</option>
+                                <option value="Less Sweet">Less Sweet</option>
+                                <option value="Normal Sweet">Normal Sweet</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
+                </div>
             </div>
         </div>
     </div>
-    {% endfor %}
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Product by AJAX</button>
+    
 
 {% if messages %}
 <ul>
@@ -103,6 +139,54 @@
 </a>
 
 <h5>Sesi terakhir login: {{ last_login }}</h5>
+
+<script>
+    async function getProducts() {
+        return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
+    }
+
+    async function refreshProducts() {
+        document.getElementById("product_cards").innerHTML = ""
+        const products = await getProducts()
+        let htmlString = ``
+        products.forEach((item) => {
+            htmlString += 
+            ` <div class="card" style="width: 320px; height: 400px; display: inline-block; margin-right: 20px;">
+                <div class="card-header" style="text-align: center;">
+                <img src="..." class="rounded-float " style="width: 50px;" alt="...">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">${item.fields.name}</h5>
+                    <p class="card-text">Amount: ${item.fields.amount}</p>
+                    <p class="card-text">Price: ${item.fields.price}</p>
+                    <p class="card-text">Type: ${item.fields.type}</p>
+                    <p class="card-text">Type: ${item.fields.sweetness}</p>
+                    <p class="card-text" style="font-size: 16px; color: #c89797;">Date Added: ${item.fields.date_added}</p>
+                    <div style="text-align: center;">
+                        <a href="tambah_item/${item.pk}" class="btn btn-primary">+</a>
+                        <a href="hapus_item/${item.pk}" class="btn btn-primary">Hapus</a>
+                        <a href="kurangi_item/${item.pk}" class="btn btn-primary">-</a>
+                    </div>
+                </div>
+            </div>` 
+        });
+        
+        document.getElementById("product_cards").innerHTML = htmlString
+    }
+
+    refreshProducts()
+
+    function addProduct() {
+        fetch("{% url 'main:add_product_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshProducts)
+
+        document.getElementById("form").reset()
+        return false
+    }
+    document.getElementById("button_add").onclick = addProduct
+</script>
 
 
 {% endblock content %}

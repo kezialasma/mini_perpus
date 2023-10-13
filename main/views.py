@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, HttpResponseNotFound
 from django.core import serializers
 from main.forms import ProductForm
 from django.urls import reverse
@@ -15,6 +14,7 @@ import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.shortcuts import get_object_or_404, redirect
+from django.views.decorators.csrf import csrf_exempt
 
 @login_required(login_url='/login')
 def show_main(request):
@@ -121,3 +121,23 @@ def hapus_item(request, id):
         messages.success(request, "Berhasil menghapus item")
         return redirect('main:show_main')
     return render('main.html')
+
+def get_product_json(request):
+    product_item = Product.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize('json', product_item))
+
+@csrf_exempt
+def add_product_ajax(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        amount = request.POST.get('amount')
+        price = request.POST.get('price')
+        type = request.POST.get('type')
+        sweetness = request.POST.get('sweetness')
+        user = request.user
+        new_product = Product(name=name, amount=amount, price=price, type=type, sweetness=sweetness, user=user)
+        new_product.save()
+
+        return HttpResponse(b"CREATED", status=201)
+
+    return HttpResponseNotFound()

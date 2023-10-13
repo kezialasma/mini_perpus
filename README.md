@@ -5,6 +5,39 @@ NPM     : 2206082234
 Kelas   : PBP A
 
 Link Adaptable  : https://mini-perpus.adaptable.app
+Link PaaS       : http://kezia-lasma-tugas.pbp.cs.ui.ac.id/
+
+<details>
+<summary>TUGAS 6</summary>
+
+1.  Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.  
+    Synchronus programming memiliki cara kerja menunggu syntax per baris selesai dikerjakan terlebih dulu, kemudian baru melanjutkan ke syntax dibawahnya sehingga tidak bisa mengeksekusi beberapa kode secara bersamaan. Sementara asynchronus programming dapat mengeksekusi beberapa tugas secara bersamaan dengan menginisiasi 'async' pada pendefinisian function agar function tersebut mengembalikan sebuah promise, kemudian menggunakan syntax 'await' untuk untuk menjeda eksekusi program dan menunggu promise terselesaikan terlebih dulu untuk melanjutkan program.  
+
+2.  Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.  
+    Dalam pemrograman, event-driven programming adalah suatu keadaan dimana program memberikan timbal balik output dari suatu kejadian input dari user atau yang biasa disebut dengan event handling. Dalam AJAX dan JavaScript yang digunakan kali ini, program akan memberikan respon ketika user melakukan aksi, seperti klik button, submit, dan lain sebagainya, tanpa harus menunggu eksekusi kode sebelumnya selesai dilakukan. Pada tugas kali ini, salah satu event-driven yang digunakan adalah 'onclick', dimana ketika fungsi addProduct() dijalankan, program akan mengirim data ke server menggunakan AJAX, kemudian tampilan produk akan terbarui secara dinamis tanpa reload halaman secara manual.  
+
+3.  Jelaskan penerapan asynchronous programming pada AJAX.  
+    AJAX merupakan teknologi yang memadukan Javascript dan HTML DOM untuk menampilkan data serta peramban web untuk meminta data dari server. Teknologi ini memungkinkan halaman web untuk memperbarui data secara asinkronus dengan mengirimkan data ke peladen dibalik layar untuk memperbarui sebagian elemen data pada halaman tanpa harus me-reload halaman secara keseluruhan sehingga bersifat lebih interaktif dengan pengguna karena program merespon langsung permintaan user tanpa harus menunggu bagian kode yang lain selesai dikerjakan. Cara kerja asynchronus programming pada AJAX adalah:  
+    a.  AJAX akan membuat surat permintaan data ke server berdasarkan apa yang diminta oleh user  
+    b.  Setelah surat permintaan tersebut sudah lengkap, maka AJAX akan langsung mengirimkannya ke server tanpa harus menunggu balasan server.  
+    c.  Sementara AJAX menunggu balasan server, AJAX akan tetap berinteraksi dengan user, sehingga program tidak terhenti hanya untuk menunggu respon atas permintaan sebelumnya  
+    d.  Setelah server sudah memberikan respon atas permintaan user, AJAX akan memeriksa balasan tersebut. Jika tidak ada permasalahan pada balasan tersebut, maka AJAX akan menampilkan balasan tersebut kepada user melalui tampilan program  
+    
+4.  Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.  
+    Jika menggunakan Fetch API kita tidak perlu menggunakan unduhan atau instalasi tambahan seperti pustaka eksternal dan Fetch API menggunakan promise untuk menangani respons dari permintaan yang memudahkan pengelolaan alur asinkronus dan memisahkan permintaan dan respons sehingga memungkinkan manipulasi data secara independen. Jika menggunakan library jQuery, maka akan lebih leluasa karena library jQuery kompatibel secara lintas browser dan syntax nya lebih ringkas untuk melakukan permintaan dan penanganan respon dengan berbagai utilitas yang disediakan.  
+    Jika perlu memilih teknologi mana yang lebih baik digunakan, maka akan lebih baik menggunakan Fetch API karena memiliki kontrol yang baik dan terintegrasi dengan promise yang cocok untuk proyek dengan teknologi modern.  
+
+5.  Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).  
+    a.  Membuat fungsi get_product_json(request) untuk mengambil data produk dan di serialize ke format json  
+    b.  Membuat fungsi add_product_ajax(request) untuk melakukan add product dengan AJAX, dengan function diisi oleh variabel yang sesuai dengan models yang kita pakai  
+    c.  Melakukan routing kedua fungsi tersebut di urls.py  
+    d.  Membuat struktur card pada `for products in products` sebelumnya dan mengganti dengan struktur card yang baru dengan menandakan ID pada setiap objek card yang dibuat, contohnya `<div id="product_cards"></div>`  
+    e.  Membuat block `<Script>` berisi function async getProducts() dengan return fetch dari function get_product_json()  
+    f.  Menambahkan fungsi async refreshProducts() yang berfungsi untuk merefresh data produk secara asynchronus. Pada function inilah kita menginisiasi card dan atribut-atributnya yang sebelumnya kita inisiasikan di `for products in products`. Agar ter synchronize dengan data tiap produk, kita dapat menggunakan for loop `products.forEach(item)` yang menggunakan variabel htmlString untuk mengumpulkan isi dari for loop tersebut, kemudian melakukan getElementById  
+    f.  Menambahkan modal form dalam bentuk Bootstrap serta buttonnya untuk menampilkan modal
+    g.  Membuat function addProduct() pada block Script untuk membuat sebuah FormData baru yang datanya diambil dari form pada modal. Objek FormData dapat digunakan untuk mengirimkan data form tersebut ke server melalui syntax `new FormData(document.querySelector('#form'))` dan mengosongkan isi form setelah submit dengan `document.getElementById("form").reset()` serta menambahkan `document.getElementById("button_add").onclick = addProduct` untuk event handling ketika terjadi onclick pada button add product
+
+</details>
 
 <details>
 <summary>TUGAS 5</summary>

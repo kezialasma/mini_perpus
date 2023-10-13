@@ -9,3 +9,4 @@ class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     type = models.CharField(max_length=50, choices=(('Cold', 'Cold'), ('Hot', 'Hot')))
     sweetness = models.CharField(max_length=50, choices=(('Less Sweet', 'Less Sweet'), ('Normal Sweet', 'Normal Sweet')))
+    is_deleted = models.BooleanField(default=False)

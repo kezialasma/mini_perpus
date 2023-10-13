@@ -6,6 +6,7 @@ from main.views import logout_user
 from main.views import tambah_item 
 from main.views import kurangi_item
 from main.views import hapus_item
+from main.views import get_product_json, add_product_ajax
 
 app_name = 'main'
 
@@ -22,4 +23,6 @@ urlpatterns = [
     path('tambah_item/<int:id>/', tambah_item, name='tambah_item'),
     path('kurangi_item/<int:id>/', kurangi_item, name='kurangi_item'),
     path('hapus_item/<int:id>/', hapus_item, name='hapus_item'),
+    path('get-product/', get_product_json, name='get_product_json'),
+    path('create-product-ajax/', add_product_ajax, name='add_product_ajax')
 ]
